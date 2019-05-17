@@ -23,6 +23,20 @@ export default class Index extends Component {
         this.setState({books, currentlyReading, read, wantToRead})
 
           
+        },
+
+        movebook: (book,newShelf,allShelfs) => {
+            console.log(newShelf);
+            const newBooks = this.state.books.map(allBooks =>{
+                const foundID = allShelfs[newShelf].find(
+                    bookID => bookID == allBooks.id
+                );
+                if (foundID) {
+                    allBooks.shelf = newShelf;
+                }
+                return allBooks
+            });
+            this.state.addBooks(newBooks);
         }
     };
 }
