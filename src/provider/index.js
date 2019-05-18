@@ -25,16 +25,16 @@ export default class Index extends Component {
           
         },
 
-        movebook: (book,newShelf,allShelfs) => {
+        moveBook: (book,newShelf,allShelfs) => {
             console.log(newShelf);
             const newBooks = this.state.books.map(allBooks =>{
                 const foundID = allShelfs[newShelf].find(
-                    bookID => bookID == allBooks.id
+                    bookID => bookID === allBooks.id
                 );
                 if (foundID) {
                     allBooks.shelf = newShelf;
                 }
-                return allBooks
+                return allBooks;
             });
             this.state.addBooks(newBooks);
         }
